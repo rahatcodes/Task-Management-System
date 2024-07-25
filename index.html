@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Task Management System</h1>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter a new task">
+      <button onclick="addTask()">Add Task</button>
+    </div>
+    <div class="task-lists">
+      <div class="task-queue">
+        <h2>Assigned Tasks</h2>
+        <ul id="taskQueue"></ul>
+      </div>
+      <div class="task-undo">
+        <h2>Completed</h2>
+        <ul id="undoStack"></ul>
+      </div>
+    </div>
+    <div class="controls">
+      <button onclick="removeTask()">Remove Task</button>
+      <button onclick="undoTask()">Undo</button>
+    </div>
+    <div class="date-container">
+        <span id="current-date"></span>
+      </div>
+  </div>
+  
+  <script src="scripts.js"></script>
+  <script>
+    const dateContainer = document.getElementById("current-date");
+
+    function updateDate() {
+      const currentDate = new Date();
+      const formattedDate = currentDate.toLocaleString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric"
+      });
+      dateContainer.textContent = formattedDate;
+    }
+
+    setInterval(updateDate, 1000);
+  </script>
+</body>
+</html>
